@@ -7,8 +7,6 @@ const UseFetch = (initialUrl) => {
   const [isLoading, setIsLoading] = useState(null);
   const [url, setUrl] = useState(initialUrl);
 
-  console.log(data);
-
   useEffect(() => {
     if(!url) return;
     setIsLoading(true);
@@ -22,15 +20,17 @@ const UseFetch = (initialUrl) => {
 
             // error handling for nonexistent data
             setIsLoading(false);
-            if(data.cod >= 400) {
+            if(data.code >= 400) {
                 setError(data.message);
                 return;
             }
             setData(data);
+            console.log(data);
         })
         .catch((error) => {
             setIsLoading(false);
             setError(error);
+            console.log(error);
         });
   }, [url]);
 
