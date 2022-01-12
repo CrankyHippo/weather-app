@@ -17,15 +17,15 @@ const WeatherCard = ({ dt, temp_min, temp_max, main, icon }) => {
         {/*  datetime is received in milliseconds, let's turn into local date time */}
         <p>
           <span style={{ fontSize: "1rem", fontWeight: "500" }}>
-            {date.toLocaleTimeString()}
+            {date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </span>
           <br />
           {date.toLocaleDateString()}
         </p>
         {/* minimum temperature */}
-        <p>Min: {temp_min}</p>
+        {/* <p>Min: {Math.round(temp_min)}&#176;F</p> */}
         {/* maximum temperature */}
-        <p>Max: {temp_max}</p>
+        <p>{Math.round(temp_max)}&#176;F</p>
       </Card.Body>
     </div>
   );
